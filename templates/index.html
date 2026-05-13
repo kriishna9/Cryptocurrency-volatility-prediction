@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Crypto Volatility Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="knowledge-container">
+      <h2>What is this Project?</h2>
+      <p>
+        This is an AI-powered tool designed to predict cryptocurrency
+        <strong>Volatility</strong>.
+      </p>
+
+      <div class="knowledge-grid">
+        <div class="knowledge-card">
+          <h3>What is Volatility?</h3>
+          <p>
+            Volatility measures how rapidly a cryptocurrency's price changes.
+            High volatility means the price swings wildly (higher risk), while
+            low volatility means the price is relatively stable.
+          </p>
+        </div>
+        <div class="knowledge-card">
+          <h3>How it Works (Machine Learning)</h3>
+          <p>
+            We use a Machine Learning algorithm to analyze real-time market data
+            (like open/close prices, volume, and market cap) to predict future
+            risk levels automatically.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-container">
+      <div class="left">
+        <h1>Crypto Volatility Predictor</h1>
+
+        <div class="input-panel">
+          <div class="input-group">
+            <label>Select Crypto</label>
+            <select id="crypto">
+              <option value="bitcoin">Bitcoin</option>
+              <option value="litecoin">Litecoin</option>
+              <option value="xrp">XRP</option>
+              <option value="dogecoin">Dogecoin</option>
+              <option value="monero">Monero</option>
+              <option value="stellar">Stellar</option>
+              <option value="tether">Tether</option>
+              <option value="ethereum">Ethereum</option>
+              <option value="ethereum-classic">Ethereum Classic</option>
+              <option value="maker">Maker</option>
+              <option value="basic-attention-token">
+                Basic Attention Token
+              </option>
+              <option value="eos">EOS</option>
+              <option value="bitcoin-cash">Bitcoin Cash</option>
+              <option value="bnb">BNB</option>
+              <option value="tron">TRON</option>
+              <option value="decentraland">Decentraland</option>
+              <option value="chainlink">Chainlink</option>
+              <option value="cardano">Cardano</option>
+              <option value="filecoin">Filecoin</option>
+              <option value="theta-network">Theta Network</option>
+              <option value="huobi-token">Huobi Token</option>
+              <option value="ravencoin">Ravencoin</option>
+              <option value="tezos">Tezos</option>
+              <option value="vechain">VeChain</option>
+              <option value="quant">Quant</option>
+              <option value="usd-coin">USD Coin</option>
+              <option value="cronos">Cronos</option>
+              <option value="wrapped-bitcoin">Wrapped Bitcoin</option>
+              <option value="cosmos">Cosmos</option>
+              <option value="polygon">Polygon</option>
+              <option value="okb">OKB</option>
+              <option value="unus-sed-leo">UNUS SED LEO</option>
+              <option value="algorand">Algorand</option>
+              <option value="chiliz">Chiliz</option>
+              <option value="thorchain">THORChain</option>
+              <option value="terra-classic">Terra Classic</option>
+              <option value="ftx-token">FTX Token</option>
+              <option value="hedera">Hedera</option>
+              <option value="binance-usd">Binance USD</option>
+              <option value="dai">Dai</option>
+              <option value="solana">Solana</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label>Open Price</label>
+            <input id="open" placeholder="Enter Open" />
+          </div>
+          <div class="input-group">
+            <label>High Price</label>
+            <input id="high" placeholder="Enter High" />
+          </div>
+          <div class="input-group">
+            <label>Low Price</label>
+            <input id="low" placeholder="Enter Low" />
+          </div>
+          <div class="input-group">
+            <label>Close Price</label>
+            <input id="close" placeholder="Enter Close" />
+          </div>
+          <div class="input-group">
+            <label>Volume</label>
+            <input id="volume" placeholder="Enter Volume" />
+          </div>
+          <div class="input-group">
+            <label>Market Cap</label>
+            <input id="marketCap" placeholder="Enter Market Cap" />
+          </div>
+
+          <button type="button" onclick="predict()">Predict</button>
+        </div>
+
+        <div class="output-panel" id="outputPanel">
+          <h2 id="resultText"></h2>
+          <h3 id="riskText"></h3>
+          <canvas id="chart"></canvas>
+        </div>
+      </div>
+
+      <div class="right">
+        <h3>Input Details</h3>
+        <div class="details-card-container" id="detailsCardContainer">
+          <div class="details-card empty-state">
+            <p>Enter values and click Predict to see details</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modelModal" class="modal">
+      <div class="modal-content">
+        <h2>Select Prediction Model</h2>
+        <p>Choose which AI algorithm you want to use:</p>
+        <div class="modal-buttons">
+          <button type="button" onclick="confirmPredict('1')">
+            Model 1 (Random Forest) - R²: 0.7223
+          </button>
+          <button type="button" onclick="confirmPredict('2')">
+            Model 2 (CatBoost) - R²: 0.794
+          </button>
+          <button type="button" onclick="confirmPredict('3')">
+            Model 3 (XGBoost) - R²: 0.809
+          </button>
+          <button
+            type="button"
+            onclick="confirmPredict('average')"
+            style="background: #00ff88; color: black"
+          >
+            Ensemble Average - R²: 0.7751
+          </button>
+        </div>
+        <button class="close-btn" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+  </body>
+</html>
